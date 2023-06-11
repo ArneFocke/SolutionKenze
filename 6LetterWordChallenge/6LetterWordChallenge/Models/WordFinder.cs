@@ -19,9 +19,9 @@ namespace _6LetterWordChallenge.Models
 
         public HashSet<WordCombination> FindCombinations()
         {
-            string filePath = "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge\\Config";
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(filePath)
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "Config");
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(configFilePath)
                 .AddJsonFile("appsettings.json")
                 .Build();
 

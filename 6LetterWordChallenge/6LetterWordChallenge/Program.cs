@@ -13,7 +13,7 @@ class Program
         var FileReader = new FileReader();
 
         Console.WriteLine("reading file and searching for combinations");
-        List<Word> words = FileReader.ReadWordsFromFile("C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge\\input.txt");
+        List<Word> words = FileReader.ReadWordsFromFile();
 
         WordFinder combinationFinder = new WordFinder(words);
         HashSet<WordCombination> combinations = combinationFinder.FindCombinations();

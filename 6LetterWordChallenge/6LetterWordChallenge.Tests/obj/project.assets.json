@@ -6113,11 +6113,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge.Tests\\6LetterWordChallenge.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Arne\\Documents\\Git\\SolutionKenze\\6LetterWordChallenge\\6LetterWordChallenge.Tests\\6LetterWordChallenge.Tests.csproj",
       "projectName": "6LetterWordChallenge.Tests",
-      "projectPath": "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge.Tests\\6LetterWordChallenge.Tests.csproj",
+      "projectPath": "C:\\Users\\Arne\\Documents\\Git\\SolutionKenze\\6LetterWordChallenge\\6LetterWordChallenge.Tests\\6LetterWordChallenge.Tests.csproj",
       "packagesPath": "C:\\Users\\Arne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge.Tests\\obj\\",
+      "outputPath": "C:\\Users\\Arne\\Documents\\Git\\SolutionKenze\\6LetterWordChallenge\\6LetterWordChallenge.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Arne\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -6134,8 +6134,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge\\6LetterWordChallenge.csproj": {
-              "projectPath": "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge\\6LetterWordChallenge.csproj"
+            "C:\\Users\\Arne\\Documents\\Git\\SolutionKenze\\6LetterWordChallenge\\6LetterWordChallenge\\6LetterWordChallenge.csproj": {
+              "projectPath": "C:\\Users\\Arne\\Documents\\Git\\SolutionKenze\\6LetterWordChallenge\\6LetterWordChallenge\\6LetterWordChallenge.csproj"
             }
           }
         }
