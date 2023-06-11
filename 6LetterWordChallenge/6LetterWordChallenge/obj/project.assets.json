@@ -5384,11 +5384,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge\\6LetterWordChallenge.csproj",
+      "projectUniqueName": "C:\\Users\\Arne\\Documents\\Git\\SolutionKenze\\6LetterWordChallenge\\6LetterWordChallenge\\6LetterWordChallenge.csproj",
       "projectName": "6LetterWordChallenge",
-      "projectPath": "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge\\6LetterWordChallenge.csproj",
+      "projectPath": "C:\\Users\\Arne\\Documents\\Git\\SolutionKenze\\6LetterWordChallenge\\6LetterWordChallenge\\6LetterWordChallenge.csproj",
       "packagesPath": "C:\\Users\\Arne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge\\obj\\",
+      "outputPath": "C:\\Users\\Arne\\Documents\\Git\\SolutionKenze\\6LetterWordChallenge\\6LetterWordChallenge\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Arne\\AppData\\Roaming\\NuGet\\NuGet.Config",

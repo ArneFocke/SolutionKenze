@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y/FaAYdQDfy1A5CA5CtqgYlc33+2gcYQss+Dr+Dbm3ZkSTlodFjy5X8U+/QHhK/xFH05wTnWomchaE3ta82mmg==",
+  "dgSpecHash": "CS/9l5D1RX0HdrQ/PBQs8MvUkBzmdAxm8+lsESgjvod4/wLrc9eInZpELZNvhti4jyKkuDrKdrOBRnSmRQuXhg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge\\6LetterWordChallenge.csproj",
+  "projectFilePath": "C:\\Users\\Arne\\Documents\\Git\\SolutionKenze\\6LetterWordChallenge\\6LetterWordChallenge\\6LetterWordChallenge.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arne\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\Arne\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",

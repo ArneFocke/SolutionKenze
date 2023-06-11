@@ -10,19 +10,18 @@ namespace _6LetterWordChallenge.Tools
 {
     public class FileReader
     {
-        public List<Word> ReadWordsFromFile(string filePath)
+        public List<Word> ReadWordsFromFile()
         {
             List<Word> words = new List<Word>();
-            string jsonPath = "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge\\Config";
-
             try
             {
-                IConfigurationRoot configuration = new ConfigurationBuilder()
-                    .SetBasePath(jsonPath)
+                string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "Config");
+                var configuration = new ConfigurationBuilder()
+                    .SetBasePath(configFilePath)
                     .AddJsonFile("appsettings.json")
                     .Build();
 
-                string inputFilePath = configuration["FilePath"];
+                string inputFilePath = Path.Combine(configFilePath, configuration["FilePath"]);
 
                 using (StreamReader sr = new StreamReader(inputFilePath))
                 {
@@ -45,5 +44,6 @@ namespace _6LetterWordChallenge.Tools
 
             return words;
         }
+
     }
 }

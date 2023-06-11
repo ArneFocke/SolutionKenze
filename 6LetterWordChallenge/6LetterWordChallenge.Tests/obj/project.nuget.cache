@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TOyQFcVtwd89kry1ViJU7EbV2BdtEScZglPO5hJjEGS9CvK518burC6a/j0OkHIsWxW0iLa2qxP3qw7QKm6IrQ==",
+  "dgSpecHash": "WHQpeZwJUju7ktD2nvGxm8Aq7Cm/lNvfJV2DDx2e0KOyt6kR0/U49xHHc/9Gk7mzNbs5QsJ4Vs5/+9T2oDgrNQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge.Tests\\6LetterWordChallenge.Tests.csproj",
+  "projectFilePath": "C:\\Users\\Arne\\Documents\\Git\\SolutionKenze\\6LetterWordChallenge\\6LetterWordChallenge.Tests\\6LetterWordChallenge.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arne\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",
     "C:\\Users\\Arne\\.nuget\\packages\\microsoft.codecoverage\\17.5.0\\microsoft.codecoverage.17.5.0.nupkg.sha512",
