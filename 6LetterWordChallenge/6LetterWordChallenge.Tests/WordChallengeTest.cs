@@ -1,4 +1,6 @@
+using _6LetterWordChallenge.Config;
 using _6LetterWordChallenge.Models;
+using _6LetterWordChallenge.Tools;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 
@@ -6,72 +8,149 @@ namespace _6LetterWordChallenge.Tests
 {
     public class WordChallengeTest
     {
-        string jsonPath = "C:\\Users\\Arne\\source\\repos\\6LetterWordChallenge\\6LetterWordChallenge\\Config";
-
-        [Fact]
-        public void Configuration_FilePathExists()
+        private IConfiguration GetTestConfiguration()
         {
-            // Arrange
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(jsonPath)
+            // Create a test configuration with the desired values
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "Config");
+
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(configFilePath)
                 .AddJsonFile("appsettings.json")
                 .Build();
 
+            return configuration;
+        }
+
+        [Fact]
+        public void ConfigFilePath_Exists()
+        {
+            // Arrange
+            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "Config");
+
             // Act
-            string filePath = configuration["FilePath"];
+            bool pathExists = Directory.Exists(configFilePath);
 
             // Assert
-            Assert.False(string.IsNullOrEmpty(filePath));
-            Assert.True(File.Exists(filePath));
+            Assert.True(pathExists);
         }
 
         [Fact]
         public void FindCombination_ReturnsAUniqueCombination()
         {
-            // Arrange
-            var words = new List<Word>
             {
-                new Word("apple"),
-                new Word("b"),
-                new Word("banana"),
-                new Word("cherry"),
-                new Word("appleb")
+                // Arrange
+                List<Word> words = new List<Word>
+            {
+                new Word("osine"),
+                new Word("them"),
+                new Word("narro"),
+                new Word("w"),
+                new Word("awler"),
+                new Word("narrow"),
+                new Word("word1"),
+                new Word("word3")
             };
 
-            var wordFinder = new WordFinder(words);
+                IConfiguration configuration = GetTestConfiguration();
 
-            // Act
-            var combinations = wordFinder.FindCombinations();
+                WordFinder wordFinder = new WordFinder(words);
 
-            //Should return a single combination (apple+b = appleb)
-            // Assert
-            Assert.Single(combinations);
+                // Act
+                HashSet<WordCombination> combinations = wordFinder.FindCombinations(configuration);
+
+                // Assert
+                Assert.Single(combinations);
+                Assert.Contains(combinations, c => c.Combination == "narrow");
+            }
         }
         [Fact]
-        public void FindCombinations_ReturnsUniqueCombinations()
+        public void IsValid_ReturnsTrue_WhenCombinationIsValid()
         {
             // Arrange
-            var words = new List<Word>
+            Word word1 = new Word("hello");
+            Word word2 = new Word("world");
+            int lengthOfWord = 10;
+
+            WordCombination wordCombination = new WordCombination(word1, word2, lengthOfWord);
+            List<Word> words = new List<Word>
             {
-                new Word("apple"),
-                new Word("a"),
-                new Word("b"),
-                new Word("c"),
-                new Word("banana"),
-                new Word("cherry"),
-                new Word("applea"),
-                new Word("appleb"),
-                new Word("applec")
+                new Word("helloworld"),
+                new Word("hello"),
+                new Word("world"),
+                new Word("other"),
             };
 
-            var wordFinder = new WordFinder(words);
+            // Act
+            bool isValid = wordCombination.IsValid(words);
+
+            // Assert
+            Assert.True(isValid);
+        }
+
+        [Fact]
+        public void IsValid_ReturnsFalse_WhenCombinationIsInvalid()
+        {
+            // Arrange
+            Word word1 = new Word("hello");
+            Word word2 = new Word("world");
+            int lengthOfWord = 10;
+
+            WordCombination wordCombination = new WordCombination(word1, word2, lengthOfWord);
+            List<Word> words = new List<Word>
+            {
+                new Word("helloWorld"),
+                new Word("hello"),
+                new Word("other"),
+            };
 
             // Act
-            var combinations = wordFinder.FindCombinations();
+            bool isValid = wordCombination.IsValid(words);
 
-            //Should return 3 combinations (apple + a = applea / apple+b = appleb /apple+c = applec)
             // Assert
-            Assert.Equal(3, combinations.Count);
+            Assert.False(isValid);
+        }
+
+        [Fact]
+        public void ToString_ReturnsExpectedStringRepresentation()
+        {
+            // Arrange
+            Word word1 = new Word("hello");
+            Word word2 = new Word("world");
+            int lengthOfWord = 10;
+
+            WordCombination wordCombination = new WordCombination(word1, word2, lengthOfWord);
+
+            // Act
+            string result = wordCombination.ToString();
+
+            // Assert
+            Assert.Equal("helloworld = hello + world", result);
+        }
+        [Fact]
+        public void ReadWordsFromFile_WithNonExistingFile_ReturnsEmptyListOfWords()
+        {
+            // Arrange
+            string nonExistingFilePath = "";
+            FileReader fileReader = new FileReader();
+
+            // Act
+            List<Word> actualWords = fileReader.ReadWordsFromFile(nonExistingFilePath);
+
+            // Assert
+            Assert.Empty(actualWords);
+        }
+        [Fact]
+        public void ReadWordsFromFile_WithExistingFile_ReturnsListOfWords()
+        {
+            // Arrange
+            string textInput = Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "Config", "input.txt");
+            FileReader fileReader = new FileReader();
+
+            // Act
+            List<Word> actualWords = fileReader.ReadWordsFromFile(textInput);
+
+            // Assert
+            Assert.NotEmpty(actualWords);
         }
     }
 }

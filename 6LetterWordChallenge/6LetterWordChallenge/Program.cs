@@ -5,27 +5,28 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using _6LetterWordChallenge.Models;
 using _6LetterWordChallenge.Tools;
+using _6LetterWordChallenge.Config;
 
 class Program
 {
     static void Main()
     {
-        var FileReader = new FileReader();
+        ConfigurationHelper configurationHelper = new ConfigurationHelper();
+        FileReader fileReader = new FileReader();
 
-        Console.WriteLine("reading file and searching for combinations");
-        List<Word> words = FileReader.ReadWordsFromFile();
+        Console.WriteLine("Reading file and searching for combinations");
 
+        List<Word> words = fileReader.ReadWordsFromFile(configurationHelper.GetInputFilePath());
         WordFinder combinationFinder = new WordFinder(words);
-        HashSet<WordCombination> combinations = combinationFinder.FindCombinations();
+        List<WordCombination> combinations = combinationFinder.FindCombinations(configurationHelper.GetConfiguration()).OrderBy(c => c.Combination).ToList();
+        HashSet<WordCombination> combinationSet = new HashSet<WordCombination>(combinations);
 
-        List<WordCombination> sortedCombinations = combinations.OrderBy(c => c.Combination).ToList();
-
-        foreach (WordCombination combination in sortedCombinations)
+        foreach (WordCombination combination in combinationSet)
         {
             Console.WriteLine(combination);
         }
 
-        Console.WriteLine($"amount of unique combinations: {combinations.Count}");
+        Console.WriteLine($"Amount of unique combinations: {combinations.Count}");
 
         Console.ReadLine();
     }
