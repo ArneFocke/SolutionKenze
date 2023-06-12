@@ -10,20 +10,12 @@ namespace _6LetterWordChallenge.Tools
 {
     public class FileReader
     {
-        public List<Word> ReadWordsFromFile()
+        public List<Word> ReadWordsFromFile(string inputFilePath)
         {
             List<Word> words = new List<Word>();
             try
             {
-                string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "Config");
-                var configuration = new ConfigurationBuilder()
-                    .SetBasePath(configFilePath)
-                    .AddJsonFile("appsettings.json")
-                    .Build();
-
-                string inputFilePath = Path.Combine(configFilePath, configuration["FilePath"]);
-
-                using (StreamReader sr = new StreamReader(inputFilePath))
+               using (StreamReader sr = new StreamReader(inputFilePath))
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)

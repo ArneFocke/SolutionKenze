@@ -17,32 +17,25 @@ namespace _6LetterWordChallenge.Models
             Words = words;
         }
 
-        public HashSet<WordCombination> FindCombinations()
+        public HashSet<WordCombination> FindCombinations(IConfiguration configuration)
         {
-            string configFilePath = Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..", "Config");
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(configFilePath)
-                .AddJsonFile("appsettings.json")
-                .Build();
+                int lengthOfWord = int.Parse(configuration["LengthOfWord"]);
+                HashSet<WordCombination> combinations = new HashSet<WordCombination>();
+                HashSet<string> encounteredCombinations = new HashSet<string>();
 
-            int lengthOfWord = int.Parse(configuration["LengthOfWord"]);
-            HashSet<WordCombination> combinations = new HashSet<WordCombination>();
-            HashSet<string> encounteredCombinations = new HashSet<string>();
-
-            for (int i = 0; i < Words.Count; i++)
-            {
-                for (int j = i + 1; j < Words.Count; j++)
+                for (int i = 0; i < Words.Count; i++)
                 {
-                    WordCombination combination = new WordCombination(Words[i], Words[j], lengthOfWord);
-
-                    if (combination.IsValid(Words) && !encounteredCombinations.Contains(combination.Combination))
+                    for (int j = i + 1; j < Words.Count; j++)
                     {
-                        combinations.Add(combination);
-                        encounteredCombinations.Add(combination.Combination);
+                        WordCombination combination = new WordCombination(Words[i], Words[j], lengthOfWord);
+
+                        if (combination.IsValid(Words) && !encounteredCombinations.Contains(combination.Combination))
+                        {
+                            combinations.Add(combination);
+                            encounteredCombinations.Add(combination.Combination);
+                        }
                     }
                 }
-            }
-
             return combinations;
         }
     }
